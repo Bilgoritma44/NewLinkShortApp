@@ -1,0 +1,123 @@
+﻿
+@using NewLinkShortApp.Models
+@model List<Link>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UrlLayout.cshtml";
+}
+<!-- Use -->
+<script src="~/web/assets/js/bootstrap.min.js"></script>
+<script src="~/web/assets/js/jquery-3.3.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+@*<link rel="stylesheet" href="sweetalert2.min.css">*@
+<div class="w3pvt-logo align-self">
+    <h2>Indata Link İle Bağlantılarınız<br /> İçin Kısa Link Oluşturun</h2>
+    <img src="~/Photo/photo.png" style="width:250px;margin-left:200px;" />
+    <hr />
+    <table>
+        @using (Html.BeginForm("Index", "Url", FormMethod.Post))
+        {
+            <div style="margin-bottom:10px;color:white;">
+                @ViewBag.a
+            </div>
+            <input type="text" class="form-control" name="LongUrl" placeholder="Link Giriniz..." required="" style="height:58px;">
+            <hr />
+            <button type="submit" class="form-control" style="background-color:rebeccapurple;color:white;">Link Kısalt</button>
+        }
+    </table>
+</div>
+<hr />
+<table class="table table-bordered" style="background-color:white;border-radius:15px;">
+    <tr>
+
+        <th>Uzun Link</th>
+        <th>Kısa Link</th>
+        <th>Kopyala</th>
+        <th>QR Kodu Üret</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            @if (x.Id == ViewBag.d)
+            {
+                <td><span class="text-muted">Son Kısaltılan |</span> @x.LongUrl</td>
+                <td><input type="text" class="form-control" value="@x.ShortUrl" id="@x.Id" style="color:red;background-color:white" /></td>
+                <td><a href="" onclick="myFunction(@x.Id)" class="btn btn-dark" style="color:white"><i class="fa fa-copy"></i> Kopyala</a></td>
+                <td><a href="/Url/QRCode/@x.Id" class="btn btn-success" style="color:white"><i class="fa fa-qrcode"></i> QR Kodu Üret</a></td>
+                <td><a href="#" class="btn btn-danger" style="color:white" onclick="deleteFunc(@x.Id)"><i class="fa fa-trash"></i> Sil</a></td>
+            }
+            else
+            {
+
+                <td> @x.LongUrl</td>
+                <td><input type="text" class="form-control" value="@x.ShortUrl" id="@x.Id" style="color:red;background-color:white" /></td>
+                <td><a href="" onclick="myFunction(@x.Id)" class="btn btn-dark" style="color:white"><i class="fa fa-copy"></i> Kopyala</a></td>
+                <td><a href="/Url/QRCode/@x.Id" class="btn btn-success" style="color:white"><i class="fa fa-qrcode"></i> QR Kodu Üret</a></td>
+                <td><a href="#" class="btn btn-danger" style="color:white" onclick="deleteFunc(@x.Id)"><i class="fa fa-trash"></i> Sil</a></td>
+
+            }
+        </tr>
+    }
+</table>
+
+<script>
+    function myFunction(id) {
+        var copyText = document.getElementById(id);
+
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+        /* Alert the copied text */
+        // alert("Copied the text: " + copyText.value);
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            background: 'black',
+            color: 'white',
+            icon: 'success',
+            title: 'Kısa Link Kopyalandı...'
+        })
+        event.preventDefault()
+
+    }
+    function deleteFunc(id) {
+        Swal.fire({
+            title: 'Silmek İstediğinize Emin misiniz?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Evet'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "/Url/Delete/" + id,
+                    type: "POST",
+                    success: Swal.fire(
+                        'Silindi.',
+                        'Silme İşlemi Başarılı.',
+                        'success'
+                    )
+                });
+
+            }
+        })
+    }
+</script>
+

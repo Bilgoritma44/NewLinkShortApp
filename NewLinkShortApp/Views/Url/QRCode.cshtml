@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "QRCode";
+    Layout = "~/Views/Shared/UrlLayout.cshtml";
+}
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+@*<div class="w3pvt-logo align-self">
+        @using (Html.BeginForm("QRCode", "Url", FormMethod.Post))
+        {
+            <input type="text" name="kod" value="@ViewBag.d" placeholder="Butona Tıklayınız..." readonly="" ; required style="width: 900px; height: 60px; border-radius: 15px;" /><br />
+            <input type="submit" value="QR Kodu Oluştur" style="background-color: #15133C; color: white; border-radius: 15px;margin-left:10px;">
+
+
+
+        }
+
+    </div>*@
+<div class="w3pvt-logo align-self">
+    <h2>Indata Link İle Oluşturduğunuz<br /> Linkler İçin QR Kodu Üretin</h2>
+    <img src="~/Photo/photo.png" style="width:250px;margin-left:200px;" />
+    <hr />
+    @using (Html.BeginForm("QRCode", "Url", FormMethod.Post))
+    {
+        <input type="text" class="form-control" name="kod" value="@ViewBag.d" placeholder="Butona Tıklayınız..." readonly="" ; required style="height:58px;">
+        <button type="submit" class="btn">QR Oluştur</button>
+    }
+
+</div>
+
+
+<br />
+@if (ViewBag.karekodImage != null)
+{
+    <img src="@ViewBag.karekodImage" alt="" style="width:400px;height:400px" />
+}
+

@@ -1,0 +1,21 @@
+﻿@model NewLinkShortApp.Models.AppUser
+@{
+    ViewBag.Title = "UserLogin";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<div class="content-wthree">
+    <h2>Giriş Yap</h2>
+    <form action="#" method="post">
+        <input type="text" class="text" name="Email" placeholder="E-mail..." required="" autofocus>
+        <input type="password" class="password" name="Password" placeholder="Şifre..." required="" autofocus>
+        <div style="color:red;margin:10px;">
+            @ViewBag.d
+        </div>
+        <button class="btn" type="submit">Giriş Yap</button>
+    </form>
+    <p class="account">Şifreni mi Unuttun? <a href="/Email/SendPassword">Şifremi Unuttum</a></p>
+
+</div>
+
+

@@ -1,0 +1,30 @@
+﻿@model NewLinkShortApp.Models.AppUser
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+
+<div class="content-wthree">
+    <h2>Kayıt Ol</h2>
+    @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+    {
+
+        <input type="text" class="text" name="Name" placeholder="Adınız..." required="" autofocus>
+        @Html.ValidationMessageFor(x => x.Name, "", new { @style = "color:red" })
+        <input type="text" class="text" name="Surname" placeholder="Soyadınız..." required="" autofocus>
+        @Html.ValidationMessageFor(x => x.Surname, "", new { @style = "color:red" })
+        <input type="text" class="text" name="Email" placeholder="E-mail..." required="" autofocus>
+        @Html.ValidationMessageFor(x => x.Email, "", new { @style = "color:red" })
+                <div style="color:red;margin:10px;">
+            @ViewBag.a
+        </div>
+        <input type="password" class="password" name="Password" placeholder="Şifre..." required="" autofocus>
+        @Html.ValidationMessageFor(x => x.Password, "", new { @style = "color:red" })
+        <button class="btn" type="submit">Kayıt Ol</button>
+
+    }
+
+
+</div>
+

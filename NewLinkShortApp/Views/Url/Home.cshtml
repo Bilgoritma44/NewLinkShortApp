@@ -1,0 +1,97 @@
+﻿
+@using NewLinkShortApp.Models
+@model List<Link>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/UrlLayout.cshtml";
+}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<div class="w3pvt-logo align-self">
+    <h2>Hemen Kayıt Ol Bağlantılarınız<br /> İçin Kısa Link Oluşturun</h2>
+    <img src="~/Photo/photo.png" style="width:250px;margin-left:200px;" />
+    <hr />
+    <table>
+        @using (Html.BeginForm("Home", "Url", FormMethod.Post))
+        {
+            <div style="margin-bottom:10px;color:white;">
+                @ViewBag.a
+            </div>
+            <input type="text" class="form-control" name="LongUrl" placeholder="Link Giriniz..." required="" style="height:58px;" />
+            <hr />
+            <button type="submit" class="form-control" style="background-color:rebeccapurple;color:white">Link Kısalt</button>
+
+        }
+    </table>
+</div>
+<hr />
+
+<table class="table table-bordered" style="background-color:white;border-radius:15px;">
+    <tr>
+
+        <th>Uzun Link</th>
+        <th>Kısa Link</th>
+        <th>Kopyala</th>
+        @*<th>QR Kodu Üret</th>*@
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            @if (x.Id == ViewBag.d)
+            {
+                <td><span class="text-muted">Son Kısaltılan |</span> @x.LongUrl</td>
+                <td><input type="text" class="form-control" value="@x.ShortUrl" id="@x.Id" style="color:red;background-color:white" /></td>
+                <td><a href="" onclick="myFunction(@x.Id)" class="btn btn-dark" style="color:white"><i class="fa fa-copy"></i> Kopyala</a></td>
+            }
+            else
+            {
+
+                <td> @x.LongUrl</td>
+                <td><input type="text" class="form-control" value="@x.ShortUrl" id="@x.Id" style="color:red;background-color:white" /></td>
+                <td><a href="" onclick="myFunction(@x.Id)" class="btn btn-dark" style="color:white"><i class="fa fa-copy"></i> Kopyala</a></td>
+                @*<td><a href="/Url/QRCode/@x.Id" class="btn btn-danger" style="color:white">QR Kodu Üret</a></td>*@
+
+            }
+        </tr>
+    }
+</table>
+
+<script>
+    function myFunction(id) {
+        var copyText = document.getElementById(id);
+
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+        /* Alert the copied text */
+        // alert("Copied the text: " + copyText.value);
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            background: 'black',
+            color: 'white',
+            icon: 'success',
+            title: 'Kısa Link Kopyalandı...'
+        })
+        event.preventDefault()
+
+    }
+</script>
+
+
