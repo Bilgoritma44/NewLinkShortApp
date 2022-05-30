@@ -13,14 +13,21 @@ namespace NewLinkShortApp.Controllers
         {
             return View();
         }
-        public void RedirectLink()
+        public ActionResult RedirectLink()
         {
             using (Context context = new Context())
             {
                 string url = Request["aspxerrorpath"]?.Replace("/", "");
-                string longUrl = context.Links.Where(x => x.Code == url).Select(s => s.LongUrl).FirstOrDefault().ToString();
-                Console.WriteLine(longUrl);
-                Response.RedirectPermanent(longUrl, true);
+                if(string.IsNullOrEmpty(url))
+                {
+                     return RedirectToAction("Index", "Url");
+                }
+                string longUrl = context.Links.Where(x => x.Code == url).Select(s => s.LongUrl).FirstOrDefault();
+                if (string.IsNullOrEmpty(longUrl))
+                {
+                    return RedirectToAction("Index", "Url");
+                }
+                return RedirectPermanent(longUrl);
             }
 
         }

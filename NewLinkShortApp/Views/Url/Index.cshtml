@@ -106,15 +106,45 @@
             confirmButtonText: 'Evet'
         }).then((result) => {
             if (result.isConfirmed) {
-                $.ajax({
-                    url: "/Url/Delete/" + id,
-                    type: "POST",
-                    success: Swal.fire(
+
+                fetch("/Url/Delete/" + id, {
+                    method: 'POST'
+                    
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log('Success:', result);
+                        debugger;
+                        if (result.result == true){
+                        Swal.fire(
                         'Silindi.',
                         'Silme İşlemi Başarılı.',
                         'success'
-                    )
-                });
+                        ).then((result) => {
+                            debugger;
+                            if (result.isConfirmed) {
+                                location.reload();
+                               
+                            }
+
+                        })
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
+
+
+                //$.ajax({
+                //    url: "/Url/Delete/" + id,
+                //    type: "POST",
+                //    success: Swal.fire(
+                //        'Silindi.',
+                //        'Silme İşlemi Başarılı.',
+                //        'success'
+                //    )
+                //});
 
             }
         })

@@ -154,12 +154,17 @@ namespace NewLinkShortApp.Controllers
             return kod;
         }
         [HttpPost]
-        public ActionResult Delete(int id)
+        public JsonResult Delete(int id)
         {
             var link = c.Links.Find(id);
-            c.Links.Remove(link);
-            c.SaveChanges();
-            return RedirectToAction("Index");
+            if(link!=null)
+            {
+                c.Links.Remove(link);
+                c.SaveChanges();
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
+
         }
 
 
