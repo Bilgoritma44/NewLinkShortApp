@@ -18,7 +18,7 @@ namespace NewLinkShortApp.Controllers
         [AllowAnonymous]
         public ActionResult Home()
         {
-            var userid = 1;
+            var userid = 4;
 
             var lastRecordId = c.Links.Where(x => x.AppUserId == userid).OrderByDescending(y => y.Id).Take(1).Select(m=>m.Id).FirstOrDefault();
 
@@ -55,7 +55,7 @@ namespace NewLinkShortApp.Controllers
 
             p.ShortUrl = "https://localhost:44367/" + kod;
             p.Code = kod;
-            p.AppUserId = 1;
+            p.AppUserId = 4;
             c.Add(p);
             c.SaveChanges();
             return RedirectToAction("Home");

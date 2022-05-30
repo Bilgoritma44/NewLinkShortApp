@@ -14,6 +14,10 @@ namespace NewLinkShortApp.Models
         }
         public DbSet<Link> Links { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Template> Templates { get; set; }
+        public DbSet<NewCertificate> NewCertificates { get; set; }
+        public DbSet<FieldValue> FieldValues { get; set; }
 
     }
 }

@@ -25,5 +25,7 @@ namespace NewLinkShortApp.Models
         public string Password { get; set; }
         public string Role { get; set; }
         public ICollection<Link> Links { get; set; }
+        public int CompanyId { get; set; }
+        public Company Company { get; set; }
     }
 }

@@ -279,11 +279,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Certificate2Controller.cs" />
     <Compile Include="Controllers\CertificateController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Controllers\UrlController.cs" />
     <Compile Include="Controllers\SvgConvertPdfController.cs" />
     <Compile Include="Global.asax.cs">
@@ -293,14 +295,23 @@
     <Compile Include="Migrations\20220528202601_Deneme.designer.cs">
       <DependentUpon>20220528202601_Deneme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220530194905_newModels.cs" />
+    <Compile Include="Migrations\20220530194905_newModels.designer.cs">
+      <DependentUpon>20220530194905_newModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\Certificate.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Link.cs" />
+    <Compile Include="Models\NewCertificate.cs" />
+    <Compile Include="Models\FieldValue.cs" />
+    <Compile Include="Models\Template.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Certificates\30052022205538.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -368,6 +379,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\deneme.svg" />
+    <Content Include="Templates\deneme2.svg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -442,10 +454,12 @@
     <Content Include="Views\Sweet\Alert.cshtml" />
     <Content Include="Views\SvgConvertPdf\Index.cshtml" />
     <Content Include="Views\SvgConvertPdf\SvgPdf.cshtml" />
+    <Content Include="Views\Template\Index.cshtml" />
+    <Content Include="Views\Certificate2\NewCertificate.cshtml" />
+    <Content Include="Views\Certificate2\ShowCertificate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Certificates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

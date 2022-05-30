@@ -54,19 +54,18 @@ namespace NewLinkShortApp.Controllers
 
             var certicateName = CertificatePath(DateTime.Now.ToString("ddMMyyyyHHmmss") +".svg");
 
+
             System.IO.File.WriteAllText(certicateName,text);
 
 
-            return RedirectToAction("SvgPdf", "SvgConvertPdf");
+
+            return RedirectToAction("SvgPdf","SvgConvertPdf", new { certificatePath = certicateName });
         }
-        public ActionResult SvgPdf()
+        public ActionResult SvgPdf(string certificatePath)
         {
+            ViewBag.certificate=certificatePath;
+
             return View();
-        }
-
-        public void FindAndReplace()
-        {
-
         }
     }
 }
