@@ -9,6 +9,7 @@ namespace NewLinkShortApp.Models
     {
         public int Id { get; set; }
         public string  Name { get; set; }
+        public string Value { get; set; }
         public int TemplateId { get; set; }
         public Template Template { get; set; }
 

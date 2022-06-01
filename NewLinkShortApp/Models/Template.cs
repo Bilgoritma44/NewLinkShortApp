@@ -11,6 +11,7 @@ namespace NewLinkShortApp.Models
         public string Name { get; set; }
         public string Code { get; set; }
         public string FilePath { get; set; }
+        public int FieldCount { get; set; }
         public int CompanyId { get; set; }
         public Company Company { get; set; }
         public ICollection<FieldValue> FieldValues { get; set; }

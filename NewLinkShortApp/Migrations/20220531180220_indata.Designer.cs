@@ -9,8 +9,8 @@ using NewLinkShortApp.Models;
 namespace NewLinkShortApp.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220530194905_newModels")]
-    partial class newModels
+    [Migration("20220531180220_indata")]
+    partial class indata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,6 +86,9 @@ namespace NewLinkShortApp.Migrations
                     b.Property<int>("TemplateId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TemplateId");
@@ -126,6 +129,9 @@ namespace NewLinkShortApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
@@ -139,6 +145,8 @@ namespace NewLinkShortApp.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("TemplateId");
 
@@ -156,6 +164,9 @@ namespace NewLinkShortApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FieldCount")
                         .HasColumnType("int");
 
                     b.Property<string>("FilePath")
@@ -200,6 +211,12 @@ namespace NewLinkShortApp.Migrations
 
             modelBuilder.Entity("NewLinkShortApp.Models.NewCertificate", b =>
                 {
+                    b.HasOne("NewLinkShortApp.Models.AppUser", "AppUser")
+                        .WithMany("NewCertificates")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("NewLinkShortApp.Models.Template", "Template")
                         .WithMany("NewCertificates")
                         .HasForeignKey("TemplateId")

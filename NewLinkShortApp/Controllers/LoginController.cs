@@ -33,7 +33,7 @@ namespace NewLinkShortApp.Controllers
             }
 
             p.Role = "User";
-            p.CompanyId = 1;
+            p.CompanyId = 3;
             c.Add(p);
             c.SaveChanges();
             return RedirectToAction("UserLogin");

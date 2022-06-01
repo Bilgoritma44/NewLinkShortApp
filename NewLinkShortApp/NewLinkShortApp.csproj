@@ -181,6 +181,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -291,17 +292,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220528202601_Deneme.cs" />
-    <Compile Include="Migrations\20220528202601_Deneme.designer.cs">
-      <DependentUpon>20220528202601_Deneme.cs</DependentUpon>
+    <Compile Include="Migrations\20220531180220_indata.cs" />
+    <Compile Include="Migrations\20220531180220_indata.designer.cs">
+      <DependentUpon>20220531180220_indata.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220530194905_newModels.cs" />
-    <Compile Include="Migrations\20220530194905_newModels.designer.cs">
-      <DependentUpon>20220530194905_newModels.cs</DependentUpon>
+    <Compile Include="Migrations\20220531181558_ddrre.cs" />
+    <Compile Include="Migrations\20220531181558_ddrre.designer.cs">
+      <DependentUpon>20220531181558_ddrre.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\Certificate.cs" />
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Link.cs" />
@@ -457,6 +459,8 @@
     <Content Include="Views\Template\Index.cshtml" />
     <Content Include="Views\Certificate2\NewCertificate.cshtml" />
     <Content Include="Views\Certificate2\ShowCertificate.cshtml" />
+    <Content Include="Views\Profile\MyCertificate.cshtml" />
+    <Content Include="Views\Certificate2\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

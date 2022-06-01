@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "ShowCertificate";
+    ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/UrlLayout.cshtml";
 }
 
@@ -12,8 +12,10 @@
         <a href="/Certificate2/Index" class="btn btn-danger float-right" style="color:white"><i class="fa fa-download"></i> Sertifika İndir</a>
     </div>
     <hr />
-    <h6>@ViewBag.a</h6>
+    <h6>@ViewBag.path</h6>
 
-    <img src="@ViewBag.a" />
-
+    <img src="@ViewBag.path" />
+    <hr/>
+    <a href="/Profile/MyCertificate" class="btn btn-danger" style="color:white"><i class="fa fa-backward"></i> Geri Dön</a>
 </div>
+

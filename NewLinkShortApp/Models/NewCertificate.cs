@@ -13,6 +13,8 @@ namespace NewLinkShortApp.Models
         public string Code { get; set; }
         public int TemplateId { get; set; }
         public Template Template { get; set; }
+        public int AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
 
 
     }

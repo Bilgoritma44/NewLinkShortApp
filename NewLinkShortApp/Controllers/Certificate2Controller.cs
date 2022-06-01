@@ -29,36 +29,52 @@ namespace NewLinkShortApp.Controllers
 
             return pat;
         }
-        public ActionResult NewCertificate()
+        public ActionResult NewCertificate(int id)
         {
-            return View();
+            var fieldValue = c.FieldValues.Where(x => x.TemplateId == id).ToList();
+            return View(fieldValue);
         }
         [HttpPost]
-        public ActionResult NewCertificate(int id,Certificate p)
+        public ActionResult NewCertificate(int id,FieldValue p)
         {
-            
+            var email = User.Identity.Name;
+            var userid = c.AppUsers.Where(x => x.Email == email).Select(y => y.Id).FirstOrDefault();
+
+            var fieldValue = c.FieldValues.Where(x => x.TemplateId == id).ToList();
 
             var templatePath = c.Templates.Where(x => x.Id == id).Select(y => y.FilePath).FirstOrDefault();
 
             string fileName = templatePath;
 
             string text = System.IO.File.ReadAllText(fileName);
+            int sayac = 1;
+            foreach(var x in fieldValue)
+            {
 
-            text = text.Replace("{Text1}", p.Name);
-            text = text.Replace("{Text2}", p.Surname);
-            text = text.Replace("{Text3}", p.Tarih.ToString("s"));
+                x.Value = p.Name;
+                var input = "{Text" + sayac+"}";
+                text = text.Replace(input, x.Value);
 
-            var certicateName = CertificatePath(DateTime.Now.ToString("ddMMyyyyHHmmss" ) +p.CertificateName+".svg");
+                sayac++;
+            }
+
+
+            //text = text.Replace("{Text1}", p.Name);
+            //text = text.Replace("{Text2}", p.Surname);
+            //text = text.Replace("{Text3}", p.Tarih.ToString("s"));
+
+            var certicateName = CertificatePath(DateTime.Now.ToString("ddMMyyyyHHmmss" ) /*+p.CertificateName*/+".svg");
 
 
             System.IO.File.WriteAllText(certicateName, text);
 
             NewCertificate certi = new NewCertificate();
 
-            certi.Name = p.CertificateName;
+            //certi.Name = p.CertificateName;
             certi.FilePath = certicateName;
             certi.Code = CertificateCode();
             certi.TemplateId = id;
+            certi.AppUserId = userid;
             c.NewCertificates.Add(certi);
             c.SaveChanges();
 
@@ -83,5 +99,14 @@ namespace NewLinkShortApp.Controllers
             return kod;
 
         }
+        public ActionResult Detail(int id)
+        {
+            var deger = c.NewCertificates.Where(x => x.Id == id).Select(y => y.FilePath).FirstOrDefault();
+
+            ViewBag.path = deger;
+
+            return View();
+        }
+        
     }
 }

@@ -27,5 +27,6 @@ namespace NewLinkShortApp.Models
         public ICollection<Link> Links { get; set; }
         public int CompanyId { get; set; }
         public Company Company { get; set; }
+        public ICollection<NewCertificate> NewCertificates { get; set; }
     }
 }

@@ -18,9 +18,18 @@ namespace NewLinkShortApp.Controllers
         [AllowAnonymous]
         public ActionResult Home()
         {
-            var userid = 4;
+            var userid = 8;
 
             var lastRecordId = c.Links.Where(x => x.AppUserId == userid).OrderByDescending(y => y.Id).Take(1).Select(m=>m.Id).FirstOrDefault();
+
+           //if(lastRecordId==0)
+           // {
+           //     ViewBag.d = lastRecordId;
+                
+           //     var deger2 = c.Links.Where(x => x.AppUserId == userid).OrderByDescending(y => y.Id).Take(3).ToList();
+
+           //     return View(deger2);
+           // }
 
             ViewBag.d = lastRecordId;
 
@@ -55,7 +64,7 @@ namespace NewLinkShortApp.Controllers
 
             p.ShortUrl = "https://localhost:44367/" + kod;
             p.Code = kod;
-            p.AppUserId = 4;
+            p.AppUserId = 8;
             c.Add(p);
             c.SaveChanges();
             return RedirectToAction("Home");

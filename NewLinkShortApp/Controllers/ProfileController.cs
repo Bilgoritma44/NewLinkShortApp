@@ -1,4 +1,5 @@
-﻿using NewLinkShortApp.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using NewLinkShortApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +62,39 @@ namespace NewLinkShortApp.Controllers
             Session.Abandon();
             return RedirectToAction("Index", "Url");
 
+        }
+        public ActionResult MyCertificate()
+        {
+            var useremail = User.Identity.Name;
+            var userid= db.AppUsers.Where(x=>x.Email==useremail).Select(y=>y.Id).FirstOrDefault();
+
+            var deger = db.NewCertificates.Where(x => x.AppUserId == userid).Include(y=>y.Template).ToList();
+
+            return View(deger);
+        }
+        [HttpPost]
+        public ActionResult MyCertificate(string kod)
+        {
+            var certificate = db.NewCertificates.ToList();
+
+
+            foreach (var b in certificate)
+            {
+
+                if (b.Code == kod)
+                {
+                    var deger = db.NewCertificates.Where(x => x.Code == kod).Include(y => y.Template).ToList();
+                    return View(deger);
+                }
+            }
+
+            ViewBag.a = "Aramış Olduğunuz Sertifika Bulunamamaktadır. Lüften Tekrar Deneyiniz.";
+
+            var useremail = User.Identity.Name;
+            var userid = db.AppUsers.Where(x => x.Email == useremail).Select(y => y.Id).FirstOrDefault();
+            var deger2 = db.NewCertificates.Where(x => x.AppUserId == userid).Include(y => y.Template).ToList();
+
+            return View(deger2);
         }
     }
 }

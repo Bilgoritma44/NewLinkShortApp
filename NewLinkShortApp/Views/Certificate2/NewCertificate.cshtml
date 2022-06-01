@@ -1,4 +1,6 @@
-﻿@model NewLinkShortApp.Models.Certificate
+﻿@using NewLinkShortApp.Models
+@model List<FieldValue>
+
 @{
     ViewBag.Title = "NewCertificate";
     Layout = "~/Views/Shared/UrlLayout.cshtml";
@@ -14,19 +16,19 @@
                 <form action="#" method="post">
                     @*<div style="color:white;margin-bottom:10px;">
 
-        </div>*@
-                    <label style="color:white">Sertifika Adı</label>
+                    </div>*@
+                    @*<label style="color:white">Sertifika Adı</label>
                     @Html.TextBoxFor(x => x.CertificateName, new { placeholder = "Sertifika Adı...", @class = "form-control" })
-                    <br />
-                    <label style="color:white">Adınız</label>
-                    @Html.TextBoxFor(x => x.Name, new { placeholder = "Adınız...", @class = "form-control" })
-                    <br />
-                    <label style="color:white">Soyadınız</label>
-                    @Html.TextBoxFor(x => x.Surname, new { placeholder = "Soyadınız...", @class = "form-control" })
-                    <br />
-                    <label style="color:white">Tarih</label>
-                    @Html.TextBoxFor(x => x.Tarih, new { placeholder = "Tarih...", @class = "form-control" })
+                    <br />*@
+                   @foreach (var x in Model)
+                   {
 
+
+                    <label style="color:white">@x.Name</label>
+                    <input type="text" name="@x.Name" class="form-control" placeholder="@x.Name..." />
+                   
+                    <br />
+                   }
                     <hr />
                     <button type="submit" id="btnId" class="form-control" style="background-color:rebeccapurple;color:white">Sertifika Kaydet</button>
                 </form>

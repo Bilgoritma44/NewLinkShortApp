@@ -12,6 +12,7 @@ namespace NewLinkShortApp.Models
         {
             optionsBuilder.UseSqlServer("server=LAPTOPSN-PF22HQ\\DENEME;database=IndataShortLink;integrated security=true");
         }
+
         public DbSet<Link> Links { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Company> Companies { get; set; }

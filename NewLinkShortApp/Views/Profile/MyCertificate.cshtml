@@ -1,0 +1,48 @@
+﻿@using NewLinkShortApp.Models
+@model List<NewCertificate>
+@{
+    ViewBag.Title = "MyCertificate";
+    Layout = "~/Views/Shared/UrlLayout.cshtml";
+}
+
+<div class="w3pvt-logo align-self">
+    <h2>Indata Link İle Bağlantılarınız<br /> İçin Kısa Link Oluşturun</h2>
+    <img src="~/Photo/photo.png" style="width:250px;margin-left:200px;" />
+    <hr />
+    <table>
+        @using (Html.BeginForm("MyCertificate", "Profile", FormMethod.Post))
+        {
+            <div style="margin-bottom:10px;color:white;">
+                @ViewBag.a
+            </div>
+            <input type="text" class="form-control" name="kod" placeholder="Sertifika Kodu Giriniz..." required="" style="height:58px;">
+            <hr />
+            <button type="submit" class="form-control" style="background-color:rebeccapurple;color:white;">Sertifika Ara</button>
+        }
+    </table>
+</div>
+<hr />
+<table class="table table-bordered" style="background-color:white;border-radius:15px;">
+    <tr style="background-color: forestgreen;color:white">
+
+        <th>Sertifika Adı</th>
+        <th>Sertifika Kod</th>
+        <th>Şablon Adı</th>
+        <th>Görüntüle</th>
+        
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+
+                <td> @x.Name</td>
+                <td> @x.Code</td>
+                <td> @x.Template.Name</td>
+                <td><a href="/Certificate2/Detail/@x.Id" class="btn btn-info" style="color:white"><i class="fa fa-eye"></i> Görüntüle</a></td>
+               
+
+            
+        </tr>
+    }
+</table>
+
