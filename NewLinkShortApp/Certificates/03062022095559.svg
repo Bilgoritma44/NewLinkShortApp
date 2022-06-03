@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg338"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs335">
+    <rect
+       x="237.19089"
+       y="453.69653"
+       width="82.741009"
+       height="92.394126"
+       id="rect454" />
+  </defs>
+  <g
+     id="layer1">
+    <ellipse
+       style="fill:#800000;stroke-width:0.264583"
+       id="path394"
+       cx="113.83783"
+       cy="55.094593"
+       rx="34.662159"
+       ry="30.648647" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text452"
+       style="fill:#800000;white-space:pre;shape-inside:url(#rect454)" />
+    <text
+       xml:space="preserve"
+       style="font-size:20.3126px;fill:#800000;stroke-width:0.264583"
+       x="8.9799166"
+       y="107.79292"
+       id="text460"
+       transform="scale(0.77556372,1.2893847)"><tspan
+         id="tspan458"
+         style="stroke-width:0.264583"
+         x="8.9799166"
+         y="107.79292">Deneme2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20.3126px;fill:#800000;stroke-width:0.264583"
+       x="168.77022"
+       y="108.77567"
+       id="text460-7"
+       transform="scale(0.77556372,1.2893847)"><tspan
+         id="tspan458-3"
+         style="stroke-width:0.264583"
+         x="168.77022"
+         y="108.77567">3.500</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20.3126px;fill:#800000;stroke-width:0.264583"
+       x="8.3463545"
+       y="25.014786"
+       id="text460-7-6"
+       transform="scale(0.77556372,1.2893847)"><tspan
+         id="tspan458-3-5"
+         style="stroke-width:0.264583"
+         x="8.3463545"
+         y="25.014786">Deneme1</tspan></text>
+  </g>
+</svg>

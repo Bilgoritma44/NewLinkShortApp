@@ -1,11 +1,10 @@
 ﻿@using NewLinkShortApp.Models
 @model List<FieldValue>
-
 @{
     ViewBag.Title = "NewCertificate";
     Layout = "~/Views/Shared/UrlLayout.cshtml";
 }
-
+@{ int sayac = 1;}
 <div class="w3pvt-logo align-self">
     <h2>Indata Link İle Bağlantılarınız<br /> İçin Sertifika Oluşturun</h2>
     <img src="~/Photo/photo.png" style="width:250px;margin-left:200px;" />
@@ -18,17 +17,20 @@
 
                     </div>*@
                     @*<label style="color:white">Sertifika Adı</label>
-                    @Html.TextBoxFor(x => x.CertificateName, new { placeholder = "Sertifika Adı...", @class = "form-control" })
+                     @Html.TextBoxFor(x => x.CertificateName, new { placeholder = "Sertifika Adı...", @class = "form-control" })
                     <br />*@
-                   @foreach (var x in Model)
-                   {
+                    
+                    @foreach (var x in Model)
+                    {
 
+                        var deger = "Text" + sayac;
 
-                    <label style="color:white">@x.Name</label>
-                    <input type="text" name="@x.Name" class="form-control" placeholder="@x.Name..." />
-                   
-                    <br />
-                   }
+                        <label style="color:white">@x.Name</label>
+                        <input type="text" name="@x.Text_1" class="form-control" placeholder="@x.Name..." /> 
+
+                        <br />
+                        sayac++;
+                    }
                     <hr />
                     <button type="submit" id="btnId" class="form-control" style="background-color:rebeccapurple;color:white">Sertifika Kaydet</button>
                 </form>

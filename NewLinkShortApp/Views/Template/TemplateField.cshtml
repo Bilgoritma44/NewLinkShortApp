@@ -1,0 +1,23 @@
+﻿@using NewLinkShortApp.Models
+@model List<TemplateParameter>
+@{
+    ViewBag.Title = "TemplateField";
+    Layout = "~/Views/Shared/UrlLayout.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Parametre</th>
+    </tr>
+    @foreach (var y in Model)
+    {
+                <tr>
+                    <td>@y.Name</td>
+                </tr>
+
+    }
+
+
+
+</table>

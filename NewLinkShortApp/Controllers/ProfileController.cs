@@ -96,5 +96,11 @@ namespace NewLinkShortApp.Controllers
 
             return View(deger2);
         }
+        public ActionResult ShowCert(int id)
+        {
+            var deger = db.NewCertificates.Where(x => x.Id == id).Select(y => y.FilePath2).FirstOrDefault();
+
+            return View(deger);
+        }
     }
 }

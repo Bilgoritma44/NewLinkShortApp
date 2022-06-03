@@ -27,11 +27,25 @@ namespace NewLinkShortApp.Controllers
                 x.FieldCount=fieldCount;
 
             }
+                Class2 cs = new Class2();
+                
 
-                var deger = c.Templates.Where(x => x.CompanyId == companyid).ToList();
+                cs.Deger1 = c.Templates.Where(x => x.CompanyId == companyid).ToList();
 
-                return View(deger);
+                cs.Deger2 = c.FieldValues.ToList();
+
+                return View(cs);
             
+        }
+        public ActionResult FieldAction()
+        {
+            return RedirectToAction("Add","FieldValue");
+        }
+        public ActionResult TemplateField(int id)
+        {
+            var deger = c.FieldValues.Where(x => x.TemplateId == id).ToList();
+
+            return View(deger);
         }
     }
 }

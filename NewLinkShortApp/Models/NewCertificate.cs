@@ -10,6 +10,7 @@ namespace NewLinkShortApp.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string FilePath { get; set; }
+        public string FilePath2 { get; set; }
         public string Code { get; set; }
         public int TemplateId { get; set; }
         public Template Template { get; set; }

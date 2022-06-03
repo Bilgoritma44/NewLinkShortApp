@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/UrlLayout.cshtml";
 }
 
+<script src="~/web/assets/js/jquery-3.3.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
 <div class="w3pvt-logo align-self">
     <h2>Indata Link İle Bağlantılarınız<br /> İçin Kısa Link Oluşturun</h2>
     <img src="~/Photo/photo.png" style="width:250px;margin-left:200px;" />
@@ -29,20 +32,29 @@
         <th>Sertifika Kod</th>
         <th>Şablon Adı</th>
         <th>Görüntüle</th>
-        
+
     </tr>
     @foreach (var x in Model)
     {
         <tr>
 
-                <td> @x.Name</td>
-                <td> @x.Code</td>
-                <td> @x.Template.Name</td>
-                <td><a href="/Certificate2/Detail/@x.Id" class="btn btn-info" style="color:white"><i class="fa fa-eye"></i> Görüntüle</a></td>
-               
-
-            
+            <td> @x.Name</td>
+            <td> @x.Code</td>
+            <td> @x.Template.Name</td>
+            <td><a href="#" class="btn btn-info" style="color:white" onclick="filePath(@x.Id)"><i class="fa fa-eye"></i> Görüntüle</a></td>
         </tr>
     }
 </table>
 
+<script>
+    function filePath(id) {
+        Swal.fire({
+            title: 'Sertifika',
+            text: 'Sertifika Görüntüleme Ekranı',
+            imageUrl: '../Certificates/03062022095559.svg',
+            imageWidth: 600,
+            imageHeight: 400,
+            imageAlt: 'Custom image',
+        })
+    }
+</script>

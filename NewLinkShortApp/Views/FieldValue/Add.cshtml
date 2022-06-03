@@ -1,0 +1,37 @@
+﻿@model NewLinkShortApp.Models.FieldValue
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/UrlLayout.cshtml";
+}
+<script src="~/web/assets/js/jquery-3.3.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+<div class="w3pvt-logo align-self">
+    <h2>Indata Link İle Bağlantılarınız<br /> İçin Kısa Link Oluşturun</h2>
+    <img src="~/Photo/photo.png" style="width:250px;margin-left:200px;" />
+    <hr />
+    <table>
+        @using (Html.BeginForm("Add", "FieldValue", FormMethod.Post))
+        {
+            <label style="color:white"><b>Şablon Adı</b></label>
+            @Html.DropDownListFor(x => x.TemplateId, (IEnumerable<SelectListItem>)ViewBag.t, "Lütfen Şablon Seçiniz...", new { @class = "form-control", @style = "height:58px;" })
+            <br />
+            <label style="color:white"><b>Parametre Adı</b></label>
+            <input type="text" class="form-control" name="Name" placeholder="Parametre Giriniz..." required="" style="height:58px;">
+            <br />
+
+            <button type="submit" class="form-control" style="background-color:rebeccapurple;color:white;" onclick="myFunc()">Parametre Ekle</button>
+        }
+    </table>
+</div>
+
+<script>
+
+    function myFunc() {
+        Swal.fire(
+            'İşlem Başarılı',
+            'Parametreniz Şablona Eklenmiştir.',
+            'success'
+        );
+    }
+</script>

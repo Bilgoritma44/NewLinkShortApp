@@ -283,6 +283,7 @@
     <Compile Include="Controllers\Certificate2Controller.cs" />
     <Compile Include="Controllers\CertificateController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\FieldValueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -300,10 +301,27 @@
     <Compile Include="Migrations\20220531181558_ddrre.designer.cs">
       <DependentUpon>20220531181558_ddrre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20220601064610_new.cs" />
+    <Compile Include="Migrations\20220601064610_new.designer.cs">
+      <DependentUpon>20220601064610_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220601175859_text.cs" />
+    <Compile Include="Migrations\20220601175859_text.designer.cs">
+      <DependentUpon>20220601175859_text.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220601191221_text2.cs" />
+    <Compile Include="Migrations\20220601191221_text2.designer.cs">
+      <DependentUpon>20220601191221_text2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220603064035_filePath.cs" />
+    <Compile Include="Migrations\20220603064035_filePath.designer.cs">
+      <DependentUpon>20220603064035_filePath.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\Certificate.cs" />
     <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\Class2.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Link.cs" />
@@ -461,6 +479,10 @@
     <Content Include="Views\Certificate2\ShowCertificate.cshtml" />
     <Content Include="Views\Profile\MyCertificate.cshtml" />
     <Content Include="Views\Certificate2\Detail.cshtml" />
+    <Content Include="Views\FieldValue\Add.cshtml" />
+    <Content Include="Views\Template\FieldAction.cshtml" />
+    <Content Include="Views\Template\TemplateField.cshtml" />
+    <Content Include="Views\Profile\ShowCert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

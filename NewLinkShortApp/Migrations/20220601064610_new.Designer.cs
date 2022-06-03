@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewLinkShortApp.Models;
 
 namespace NewLinkShortApp.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220601064610_new")]
+    partial class @new
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,22 +86,19 @@ namespace NewLinkShortApp.Migrations
                     b.Property<int>("TemplateId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Text_")
+                    b.Property<string>("Text1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text_1")
+                    b.Property<string>("Text2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text_2")
+                    b.Property<string>("Text3")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text_3")
+                    b.Property<string>("Text4")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text_4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Text_5")
+                    b.Property<string>("Text5")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Value")
@@ -154,9 +153,6 @@ namespace NewLinkShortApp.Migrations
                     b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FilePath2")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -189,9 +185,6 @@ namespace NewLinkShortApp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FilePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FilePath2")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

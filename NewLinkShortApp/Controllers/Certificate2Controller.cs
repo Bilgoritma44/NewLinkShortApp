@@ -19,20 +19,32 @@ namespace NewLinkShortApp.Controllers
 
         private string CertificatePath(string fileName)
         {
-            //string path = System.AppContext.BaseDirectory;
+            string path = System.AppContext.BaseDirectory;
+
             //string path2 = AppDomain.CurrentDomain.BaseDirectory;
             //string path3 = Directory.GetCurrentDirectory();
             //string path4 = Environment.CurrentDirectory;
             //string path5 = this.GetType().Assembly.Location;
-            var pat = AppDomain.CurrentDomain.RelativeSearchPath;
-            pat = Path.Combine(pat, "Certificates", fileName);
+            //var path = AppDomain.CurrentDomain.RelativeSearchPath;
+            //var path = @"C:\Users\erkan.caliskan\source\repos\NewLinkShortApp\NewLinkShortApp\";
+            //var path = @"C:\Users\erkan.caliskan\source\repos\NewLinkShortApp\NewLinkShortApp\";
+            path = Path.Combine(path, "Certificates", fileName);
 
-            return pat;
+            return path;
         }
         public ActionResult NewCertificate(int id)
         {
             var fieldValue = c.FieldValues.Where(x => x.TemplateId == id).ToList();
+            int sayac = 1;
+            
+            foreach (var x in fieldValue)
+            {
+                x.Text_1 = "Text_"+sayac;
+                sayac++;
+            }
+
             return View(fieldValue);
+
         }
         [HttpPost]
         public ActionResult NewCertificate(int id,FieldValue p)
@@ -48,20 +60,42 @@ namespace NewLinkShortApp.Controllers
 
             string text = System.IO.File.ReadAllText(fileName);
             int sayac = 1;
-            foreach(var x in fieldValue)
+            //foreach (var x in fieldValue)
+            //{
+            //    x.Text_1 = "Text_" + sayac;
+
+            //    //var deger = Convert.ToString("Text_"+ sayac);
+
+            //    var input = "{Text" + sayac + "}";
+            //    text = text.Replace(input, p.Text_1);
+            //    sayac++;
+            //}
+           
+            if (p.Text_1 == null)
             {
-
-                x.Value = p.Name;
-                var input = "{Text" + sayac+"}";
-                text = text.Replace(input, x.Value);
-
-                sayac++;
+                p.Text_1 = "";
             }
-
-
-            //text = text.Replace("{Text1}", p.Name);
-            //text = text.Replace("{Text2}", p.Surname);
-            //text = text.Replace("{Text3}", p.Tarih.ToString("s"));
+            text = text.Replace("{Text1}", p.Text_1);
+            if(p.Text_2==null)
+            {
+                p.Text_2 = "";
+            }
+            text = text.Replace("{Text2}", p.Text_2);
+            if(p.Text_3==null)
+            {
+                p.Text_3 = "";
+            }
+            text = text.Replace("{Text3}", p.Text_3);
+            if(p.Text_4==null)
+            {
+                p.Text_4 = "";
+            }
+            text = text.Replace("{Text4}", p.Text_4);
+            if(p.Text_5==null)
+            {
+                p.Text_5 = "";
+            }
+            text = text.Replace("{Text4}", p.Text_5);
 
             var certicateName = CertificatePath(DateTime.Now.ToString("ddMMyyyyHHmmss" ) /*+p.CertificateName*/+".svg");
 
@@ -72,17 +106,22 @@ namespace NewLinkShortApp.Controllers
 
             //certi.Name = p.CertificateName;
             certi.FilePath = certicateName;
+
+            string[] shortFilePath = certicateName.Split('\\');
+            string databasePath="../"+shortFilePath[7]+"/"+shortFilePath[8];
+            certi.FilePath2= databasePath;
             certi.Code = CertificateCode();
             certi.TemplateId = id;
             certi.AppUserId = userid;
             c.NewCertificates.Add(certi);
             c.SaveChanges();
 
-            return RedirectToAction("ShowCertificate", "Certificate2", new { certificatePath = certicateName });
+            return RedirectToAction("ShowCertificate", "Certificate2", new { certificatePath = databasePath });
         }
-        public ActionResult ShowCertificate(string path)
+        public ActionResult ShowCertificate(string certificatePath)
         {
-            ViewBag.a = path;
+            ViewBag.a = certificatePath;
+
             return View();
         }
         public string CertificateCode()

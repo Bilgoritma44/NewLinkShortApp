@@ -3,17 +3,19 @@
     ViewBag.Title = "ShowCertificate";
     Layout = "~/Views/Shared/UrlLayout.cshtml";
 }
+<table class="form-group">
+    <div>
 
-<div class="w3pvt-logo align-self">
-    @*<h2>Indata Link İle Bağlantılarınız<br /> İçin Kısa Link Oluşturun</h2>
+        @*<h2>Indata Link İle Bağlantılarınız<br /> İçin Kısa Link Oluşturun</h2>
         <img src="~/Photo/photo.png" style="width:250px;margin-left:200px;" />*@
-    <div class="form-group">
-        <h2 class="text-center">Sertifika Detay</h2>
-        <a href="/Certificate2/Index" class="btn btn-danger float-right" style="color:white"><i class="fa fa-download"></i> Sertifika İndir</a>
+        <a href="/Certificate2/Index" class="btn btn-danger float-right" style="color:white;"><i class="fa fa-download"></i> Sertifika İndir</a>
+        <div class="form-control">
+            <h4 style="color:black">Sertifika Detay</h4>
+
+        </div><br />
+
+        <img src="@ViewBag.a" />
+
     </div>
-    <hr />
-    <h6>@ViewBag.a</h6>
-
-    <img src="@ViewBag.a" />
-
-</div>
+    @*<a href="/Certificate2/Index" class="btn btn-danger float-right" style="color:white"><i class="fa fa-download"></i> Sertifika İndir</a>*@
+</table>
